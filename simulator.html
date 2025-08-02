@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>COM Port Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>COM Port Simulator</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="simulator.html">Simulator</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main class="simulator-container">
+    <h2>Send Command</h2>
+    <input type="text" id="commandInput" placeholder="Type a command (e.g., LED ON)">
+    <button onclick="sendCommand()">Send</button>
+
+    <div id="response" class="response-box"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 COM Port Simulator</p>
+  </footer>
+
+  <script>
+    function sendCommand() {
+      const input = document.getElementById('commandInput').value.trim().toUpperCase();
+      const responseBox = document.getElementById('response');
+
+      let response = "";
+
+      if (input === "LED ON") {
+        response = "🟢 LED turned ON";
+      } else if (input === "LED OFF") {
+        response = "⚫ LED turned OFF";
+      } else if (input === "STATUS") {
+        response = "✅ System status: All OK";
+      } else if (input === "") {
+        response = "⚠️ Please enter a command.";
+      } else {
+        response = "❌ Unknown command.";
+      }
+
+      responseBox.textContent = response;
+    }
+  </script>
+</body>
+</html>
